@@ -31,6 +31,20 @@ extension String {
     }
 }
 
-//print("fdadf fdafd sdfd".componentsSeparatedByStringWithoutFoundation(" "))
-//print("fdadf fdafd sdfd".componentsSeparatedByStringWithoutFoundation("f"))
-//print("fdadf fdafd sdfd".componentsSeparatedByStringWithoutFoundation(" f"))
+//Foundationが使えない環境での文字列切取(先頭からの取得範囲を指定)拡張
+extension String {
+    func substringToIndexWithoutFoundation(index: Int) -> String {
+        var addCnt : Int = 0
+        var stack = [Character]()
+        
+        self.characters.generate().forEach { (c : Character) in
+            if addCnt < index {
+                stack.append(c)
+                addCnt += 1
+            }
+        }
+        
+        return String(stack)
+    }
+}
+
