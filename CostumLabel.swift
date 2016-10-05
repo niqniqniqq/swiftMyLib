@@ -10,6 +10,10 @@ class CostumLabel: UILabel {
         padding.bottom = bottom
     }
     
+    func setPaddingByUIEdgeInsets(padding : UIEdgeInsets){
+        self.padding = padding
+    }
+    
     override func drawTextInRect(rect: CGRect) {
         let newRect = UIEdgeInsetsInsetRect(rect, padding)
         super.drawTextInRect(newRect)
