@@ -2,18 +2,23 @@ class CostumLabel: UILabel {
     
     var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
-    //padding設定 
-    func setPadding(top : CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat){
+    init(frame: CGRect, top : CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
         padding.top = top
         padding.left = left
         padding.right = right
         padding.bottom = bottom
+        super.init(frame: frame)
     }
     
-    func setPaddingByUIEdgeInsets(padding : UIEdgeInsets){
+    init(frame: CGRect, padding : UIEdgeInsets) {
         self.padding = padding
+        super.init(frame: frame)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func drawTextInRect(rect: CGRect) {
         let newRect = UIEdgeInsetsInsetRect(rect, padding)
         super.drawTextInRect(newRect)
@@ -26,3 +31,4 @@ class CostumLabel: UILabel {
         return intrinsicContentSize
     }
 }
+
