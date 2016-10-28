@@ -21,7 +21,15 @@ class GATrackingManager {
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
         tracker.set(kGAIScreenName, value: nil)
     }
-    
+
+    /**
+     GA Event tracking を送信します
+     :param: category
+     :param: action
+     :param: label
+     :param: value
+     :returns: void
+     */    
     class func sendEventTracking(category : String, action : String, label : String, value : NSNumber?) {
         let tracker = GAI.sharedInstance().defaultTracker
         let event = GAIDictionaryBuilder.createEventWithCategory(category,
